@@ -450,16 +450,20 @@
     'use strict';
     function r(e) {
       return function(t) {
-        d.a.get('http://localhost:3001/courses/' + e).then(function(e) {
-          t({ type: p.a, payload: e.data.course });
-        });
+        d.a
+          .get('//desolate-peak-57738.herokuapp.com/courses/' + e)
+          .then(function(e) {
+            t({ type: p.a, payload: e.data.course });
+          });
       };
     }
     function o() {
       return function(e) {
-        d.a.get('http://localhost:3001/courses').then(function(t) {
-          e({ type: p.b, payload: t.data.courses });
-        });
+        d.a
+          .get('//desolate-peak-57738.herokuapp.com/courses')
+          .then(function(t) {
+            e({ type: p.b, payload: t.data.courses });
+          });
       };
     }
     function a() {
@@ -469,41 +473,49 @@
     }
     function i() {
       return function(e) {
-        d.a.get('http://localhost:3001/students').then(function(t) {
-          e({ type: p.d, payload: t.data.students });
-        });
+        d.a
+          .get('//desolate-peak-57738.herokuapp.com/students')
+          .then(function(t) {
+            e({ type: p.d, payload: t.data.students });
+          });
       };
     }
     function s(e) {
       return function(t) {
-        d.a.get('http://localhost:3001/students/' + e).then(function(e) {
-          console.log(
-            e.data,
-            "What's going on here?"
-          ), t({ type: p.e, payload: e.data.student });
-        });
+        d.a
+          .get('//desolate-peak-57738.herokuapp.com/students/' + e)
+          .then(function(e) {
+            console.log(
+              e.data,
+              "What's going on here?"
+            ), t({ type: p.e, payload: e.data.student });
+          });
       };
     }
     function u(e) {
       return function(t) {
-        d.a.delete('http://localhost:3001/students/' + e).then(function(e) {});
+        d.a
+          .delete('//desolate-peak-57738.herokuapp.com/students/' + e)
+          .then(function(e) {});
       };
     }
     function c(e) {
       return function(t) {
-        d.a.delete('http://localhost:3001/courses/' + e).then(function(e) {
-          (window.location.href = 'http://localhost:3000/auth/dashboard'), t({ type: p.b, payload: e.data.courses });
-        });
+        d.a
+          .delete('//desolate-peak-57738.herokuapp.com/courses/' + e)
+          .then(function(e) {
+            (window.location.href = '/create-react-app-verrfinal/build/#/auth/dashboard'), t({ type: p.b, payload: e.data.courses });
+          });
       };
     }
     function l(e, t) {
       return function(n) {
         d.a
-          .put('http://localhost:3001/courses/' + t, { name: e })
+          .put('//desolate-peak-57738.herokuapp.com/courses/' + t, { name: e })
           .then(function(e) {
             console.log(
               e.data.courses
-            ), (window.location.href = 'http://localhost:3000/courses/' + e.data.courses._id);
+            ), (window.location.href = '/create-react-app-verrfinal/build/#/courses/' + e.data.courses._id);
           });
       };
     }
@@ -532,13 +544,13 @@
         arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
         return function(r) {
           console.log('This is getting called!'), d.a
-            .post('http://localhost:3001/api/auth/register', {
+            .post('//desolate-peak-57738.herokuapp.com/api/auth/register', {
               username: e,
               fullName: t,
               password: n,
             })
             .then(function(e) {
-              window.location.href = 'http://localhost:3000/login';
+              window.location.href = '/create-react-app-verrfinal/build/#/login';
             })
             .catch(function(e) {
               window.location.href = '/?msg=This%20username%20already%20exists';
@@ -548,7 +560,7 @@
       g = function(e, t, n, r, o, a) {
         return function(i) {
           d.a
-            .post('http://localhost:3001/students', {
+            .post('//desolate-peak-57738.herokuapp.com/students', {
               firstName: e,
               lastName: t,
               phoneNumber: n,
@@ -565,14 +577,14 @@
                 courses: a,
                 streetAddress: r,
                 miscAddress: o,
-              }), (window.location.href = 'http://localhost:3000/courses/' + a), console.log(window.location.href), console.log(s.data.students, 'Student response');
+              }), (window.location.href = '/create-react-app-verrfinal/build/#/courses/' + a), console.log(window.location.href), console.log(s.data.students, 'Student response');
             });
         };
       },
       b = function(e, t, n, r, o, a) {
         return function(i) {
           d.a
-            .put('http://localhost:3001/students/' + a, {
+            .put('//desolate-peak-57738.herokuapp.com/students/' + a, {
               firstName: e,
               lastName: t,
               phoneNumber: n,
@@ -583,22 +595,22 @@
               console.log(
                 e.data.students,
                 'Checking after put'
-              ), (window.location.href = 'http://localhost:3000/courses/' + e.data.students.courses);
+              ), (window.location.href = '/create-react-app-verrfinal/build/#/courses/' + e.data.students.courses);
             });
         };
       },
       w = function(e, t) {
         return function(n) {
           n({ type: p.h, username: e, password: t }), d.a
-            .post('http://localhost:3001/api/auth/login', {
+            .post('//desolate-peak-57738.herokuapp.com/api/auth/login', {
               username: e,
               password: t,
             })
             .then(function(e) {
               v.set('token', e.data.token, {
-                path: '/',
+                path: '/create-react-app-verrfinal/build/#',
                 maxAge: 86400,
-              }), v.set('instructor', e.data.instructor, { path: '/', maxAge: 86400 }), console.log(v.get('instructor')), n({ type: p.i, fullName: e.data.instructor.fullName });
+              }), v.set('instructor', e.data.instructor, { path: '/create-react-app-verrfinal/build/#', maxAge: 86400 }), console.log(v.get('instructor')), n({ type: p.i, fullName: e.data.instructor.fullName });
             })
             .catch(function(e) {
               n({
@@ -611,7 +623,7 @@
       _ = function(e, t) {
         return function(n) {
           d.a
-            .post('http://localhost:3001/courses', {
+            .post('//desolate-peak-57738.herokuapp.com/courses', {
               name: e,
               _creator: t,
               periods: [],
@@ -619,7 +631,7 @@
             .then(function(t) {
               v.get(
                 'instructor'
-              ), n({ type: p.f, coursename: e, _creator: v.get('instructor')._id, periods: [] }), (window.location.href = 'http://localhost:3000/auth/dashboard');
+              ), n({ type: p.f, coursename: e, _creator: v.get('instructor')._id, periods: [] }), (window.location.href = '/create-react-app-verrfinal/build/#/auth/dashboard');
             });
         };
       };
@@ -2752,7 +2764,12 @@
             }),
           };
         }), (t.prototype.computeMatch = function(e) {
-          return { path: '/', url: '/', params: {}, isExact: '/' === e };
+          return {
+            path: '/create-react-app-verrfinal/build/#',
+            url: '/',
+            params: {},
+            isExact: '/' === e,
+          };
         }), (t.prototype.componentWillMount = function() {
           var e = this, t = this.props, n = t.children, r = t.history;
           c()(
@@ -3103,7 +3120,9 @@
             value: function() {
               return console.log(this.props.error), !0 ===
                 this.props.authenticated
-                ? s.a.createElement(p.c, { to: '/auth/dashboard' })
+                ? s.a.createElement(p.c, {
+                    to: '/create-react-app-verrfinal/build/#/auth/dashboard',
+                  })
                 : s.a.createElement(u.a, {
                     onSubmit: this.processForm,
                     onChange: this.changeUser,
@@ -3241,7 +3260,7 @@
             value: function(e) {
               e.preventDefault(), this.setState({
                 isClickedEdit: !this.state.isClickedEdit,
-              }), (window.location.href = 'http://localhost:3000/editStudent/' +
+              }), (window.location.href = '/create-react-app-verrfinal/build/#/editStudent/' +
                 this.props.id);
             },
           },
@@ -3253,7 +3272,7 @@
               }), this.props.dispatch(c.i(e.target.id)), console.log(
                 e.target.id,
                 'Check target id'
-              ), (window.location.href = 'http://localhost:3000/courses/' +
+              ), (window.location.href = '/create-react-app-verrfinal/build/#/courses/' +
                 this.props.courses), console.log('this is deleting');
             },
           },
@@ -5906,47 +5925,47 @@
             null,
             o.a.createElement(s.HashLink, {
               exact: !0,
-              path: '/login',
+              path: '/create-react-app-verrfinal/build/#login',
               component: c.a,
             }),
             o.a.createElement(s.HashLink, {
               exact: !0,
-              path: '/',
+              path: '/create-react-app-verrfinal/build/#',
               component: u.a,
             }),
             o.a.createElement(s.HashLink, {
               exact: !0,
-              path: '/auth/dashboard',
+              path: '/create-react-app-verrfinal/build/#auth/dashboard',
               component: l.a,
             }),
             o.a.createElement(s.HashLink, {
               exact: !0,
-              path: '/addCourse',
+              path: '/create-react-app-verrfinal/build/#addCourse',
               component: b.a,
             }),
             o.a.createElement(s.HashLink, {
               exact: !0,
-              path: '/courses/:cuid',
+              path: '/create-react-app-verrfinal/build/#courses/:cuid',
               component: w.a,
             }),
             o.a.createElement(s.HashLink, {
               exact: !0,
-              path: '/addStudent/:cuid',
+              path: '/create-react-app-verrfinal/build/#addStudent/:cuid',
               component: _.a,
             }),
             o.a.createElement(s.HashLink, {
               exact: !0,
-              path: '/editStudent/:cuid',
+              path: '/create-react-app-verrfinal/build/#editStudent/:cuid',
               component: E.a,
             }),
             o.a.createElement(s.HashLink, {
               exact: !0,
-              path: '/editCourse/:cuid',
+              path: '/create-react-app-verrfinal/build/#editCourse/:cuid',
               component: C.a,
             }),
             o.a.createElement(s.HashLink, {
               exact: !0,
-              path: '/info',
+              path: '/create-react-app-verrfinal/build/#info',
               component: O.a,
             })
           )
@@ -6449,7 +6468,9 @@
             key: 'render',
             value: function() {
               return this.state.submitted
-                ? s.a.createElement(l.c, { to: '/auth/dashboard' })
+                ? s.a.createElement(l.c, {
+                    to: '/create-react-app-verrfinal/build/#/auth/dashboard',
+                  })
                 : s.a.createElement(
                     'form',
                     { action: '/', onSubmit: this.onSubmit },
@@ -6469,7 +6490,10 @@
                           null,
                           s.a.createElement(
                             p.Link,
-                            { to: '/login', onClick: this.handleLogout },
+                            {
+                              to: '/create-react-app-verrfinal/build/#/login',
+                              onClick: this.handleLogout,
+                            },
                             'Log out '
                           )
                         ),
@@ -6478,7 +6502,9 @@
                           null,
                           s.a.createElement(
                             p.Link,
-                            { to: '/auth/dashboard' },
+                            {
+                              to: '/create-react-app-verrfinal/build/#/auth/dashboard',
+                            },
                             'Back to Your Dashboard'
                           )
                         )
@@ -6615,7 +6641,7 @@
                 o = this.state.student.streetAddress,
                 a = this.state.student.miscAddress,
                 i = this.props.match.params.cuid;
-              (window.location.href = 'http://localhost:3000/courses/' +
+              (window.location.href = '/create-react-app-verrfinal/build/#/courses/' +
                 i), this.setState({ isSubmitted: !0 }), this.props.dispatch(
                 c.e(t, n, r, o, a, i)
               );
@@ -6632,7 +6658,8 @@
             value: function() {
               return this.state.isSubmitted
                 ? s.a.createElement(l.c, {
-                    to: '/courses/' + this.props.match.params.cuid,
+                    to: '/create-react-app-verrfinal/build/#/courses/' +
+                      this.props.match.params.cuid,
                   })
                 : s.a.createElement(
                     'form',
@@ -6653,7 +6680,10 @@
                           null,
                           s.a.createElement(
                             p.Link,
-                            { to: '/courses/' + this.props.match.params.cuid },
+                            {
+                              to: '/create-react-app-verrfinal/build/#/courses/' +
+                                this.props.match.params.cuid,
+                            },
                             'Back to Your Course Page'
                           )
                         ),
@@ -6662,7 +6692,10 @@
                           null,
                           s.a.createElement(
                             p.Link,
-                            { to: '/login', onClick: this.handleLogout },
+                            {
+                              to: '/create-react-app-verrfinal/build/#/login',
+                              onClick: this.handleLogout,
+                            },
                             'Log out '
                           )
                         )
@@ -6941,7 +6974,7 @@
                   { className: 'return-link' },
                   s.a.createElement(
                     u.Link,
-                    { to: '/login' },
+                    { to: '/create-react-app-verrfinal/build/#/login' },
                     'Click here to head to the login page.'
                   )
                 )
@@ -7040,7 +7073,8 @@
                 });
               return 1 == this.state.isClicked
                 ? s.a.createElement(c.c, {
-                    to: '/courses/' + this.state.coursename,
+                    to: '/create-react-app-verrfinal/build/#/courses/' +
+                      this.state.coursename,
                   })
                 : s.a.createElement('div', { className: 'courseButtons' }, n);
             },
@@ -7247,7 +7281,10 @@
                       null,
                       s.a.createElement(
                         l.Link,
-                        { to: '/login', onClick: this.handleLogout },
+                        {
+                          to: '/create-react-app-verrfinal/build/#/login',
+                          onClick: this.handleLogout,
+                        },
                         'Log out '
                       )
                     ),
@@ -7256,7 +7293,10 @@
                       null,
                       s.a.createElement(
                         l.Link,
-                        { to: '/addStudent/' + this.props.match.params.cuid },
+                        {
+                          to: '/create-react-app-verrfinal/build/#/addStudent/' +
+                            this.props.match.params.cuid,
+                        },
                         'Add a new Student'
                       )
                     ),
@@ -7265,7 +7305,10 @@
                       null,
                       s.a.createElement(
                         l.Link,
-                        { to: '/editCourse/' + this.props.match.params.cuid },
+                        {
+                          to: '/create-react-app-verrfinal/build/#/editCourse/' +
+                            this.props.match.params.cuid,
+                        },
                         'Edit Course Name'
                       )
                     ),
@@ -7326,7 +7369,10 @@
                       null,
                       s.a.createElement(
                         l.Link,
-                        { to: '/auth/dashboard', onClick: this.handleRedirect },
+                        {
+                          to: '/create-react-app-verrfinal/build/#/auth/dashboard',
+                          onClick: this.handleRedirect,
+                        },
                         'Back to Your Dashboard'
                       )
                     )
@@ -7433,7 +7479,7 @@
             value: function(e) {
               m.remove('token'), this.setState({
                 authenticated: !1,
-              }), (window.location.href = 'http://localhost:3000/login');
+              }), (window.location.href = '/create-react-app-verrfinal/build/#/login');
             },
           },
           {
@@ -7447,7 +7493,7 @@
             value: function() {
               var e = this;
               this.state.authenticated ||
-                (window.location.href = 'http://localhost:3000/login'), console.log(
+                (window.location.href = '/create-react-app-verrfinal/build/#/login'), console.log(
                 this.state.authenticated,
                 'that the user is authenticated'
               );
@@ -7487,7 +7533,10 @@
                       null,
                       s.a.createElement(
                         f.Link,
-                        { to: '/login', onClick: this.handleLogout },
+                        {
+                          to: '/create-react-app-verrfinal/build/#/login',
+                          onClick: this.handleLogout,
+                        },
                         'Log out '
                       )
                     ),
@@ -7496,7 +7545,7 @@
                       null,
                       s.a.createElement(
                         f.Link,
-                        { to: '/addCourse' },
+                        { to: '/create-react-app-verrfinal/build/#/addCourse' },
                         'Add a new course '
                       )
                     )
@@ -7651,7 +7700,7 @@
             key: 'render',
             value: function() {
               return this.state.submitted &&
-                (window.location.href = 'http://localhost:3000/courses/' +
+                (window.location.href = '/create-react-app-verrfinal/build/#/courses/' +
                   this.props.match.params.cuid), s.a.createElement(
                 'form',
                 { action: '/', onSubmit: this.onSubmit },
@@ -7671,7 +7720,10 @@
                       null,
                       s.a.createElement(
                         l.Link,
-                        { to: '/login', onClick: this.handleLogout },
+                        {
+                          to: '/create-react-app-verrfinal/build/#/login',
+                          onClick: this.handleLogout,
+                        },
                         'Log out '
                       )
                     ),
@@ -7680,7 +7732,10 @@
                       null,
                       s.a.createElement(
                         l.Link,
-                        { to: '/courses/' + this.props.match.params.cuid },
+                        {
+                          to: '/create-react-app-verrfinal/build/#/courses/' +
+                            this.props.match.params.cuid,
+                        },
                         'Back to Your Course'
                       )
                     )
@@ -7850,7 +7905,7 @@
                 i = this.props.match.params.cuid;
               this.props.dispatch(
                 c.c(i)
-              ), (window.location.href = 'http://localhost:3000/courses/' +
+              ), (window.location.href = '/create-react-app-verrfinal/build/#/courses/' +
                 this.props.studentCourse), this.setState({
                 isSubmitted: !0,
               }), this.props.dispatch(c.d(t, n, r, o, a, i));
@@ -7881,7 +7936,10 @@
                         null,
                         s.a.createElement(
                           l.Link,
-                          { to: '/courses/' + this.props.studentCourse },
+                          {
+                            to: '/create-react-app-verrfinal/build/#/courses/' +
+                              this.props.studentCourse,
+                          },
                           'Back to Your Course'
                         )
                       ),
@@ -7890,7 +7948,10 @@
                         null,
                         s.a.createElement(
                           l.Link,
-                          { to: '/login', onClick: this.handleLogout },
+                          {
+                            to: '/create-react-app-verrfinal/build/#/login',
+                            onClick: this.handleLogout,
+                          },
                           'Log out '
                         )
                       )
@@ -8080,7 +8141,11 @@
               'div',
               { className: 'signup-redirect' },
               "Don't have an account? Create one. ",
-              o.a.createElement(s.Link, { to: '/' }, ' Sign Up')
+              o.a.createElement(
+                s.Link,
+                { to: '/create-react-app-verrfinal/build/#/' },
+                ' Sign Up'
+              )
             ),
             o.a.createElement(
               'div',
@@ -8196,18 +8261,29 @@
               'div',
               { className: 'login-redirect' },
               'Already have an account? ',
-              o.a.createElement(s.Link, { to: '/login' }, ' Log in'),
+              o.a.createElement(
+                s.Link,
+                { to: '/create-react-app-verrfinal/build/#/login' },
+                ' Log in'
+              ),
               o.a.createElement(
                 'p',
                 null,
                 'Want more info about this app?',
                 ' ',
-                o.a.createElement(s.Link, { to: '/info' }, 'Click here'),
+                o.a.createElement(
+                  s.Link,
+                  { to: '/create-react-app-verrfinal/build/#/info' },
+                  'Click here'
+                ),
                 ' '
               )
             )
           ),
-          o.a.createElement(u.a, { path: '/login', component: c.a }),
+          o.a.createElement(u.a, {
+            path: '/create-react-app-verrfinal/build/#login',
+            component: c.a,
+          }),
           o.a.createElement(
             'div',
             { className: 'error-msg' },
